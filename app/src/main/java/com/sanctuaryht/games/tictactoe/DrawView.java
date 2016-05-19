@@ -14,11 +14,11 @@ public class DrawView extends View {
 
     @Override
     public void onDraw(Canvas canvas) {
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(15);
-
         int width= canvas.getWidth();
         int height= canvas.getHeight();
+
+        paint.setColor(Color.BLACK);
+        paint.setStrokeWidth(10);
         //vertical lines
         canvas.drawLine(width/3,0,width/3,height,paint);
         canvas.drawLine(width*2/3,0,width*2/3,height,paint);
