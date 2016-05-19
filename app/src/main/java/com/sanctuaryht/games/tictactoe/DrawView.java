@@ -15,18 +15,17 @@ public class DrawView extends View {
     @Override
     public void onDraw(Canvas canvas) {
         paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(3);
-        canvas.drawRect(30, 30, 80, 80, paint);
-        paint.setStrokeWidth(0);
-        paint.setColor(Color.CYAN);
-        canvas.drawRect(33, 60, 77, 77, paint );
-        paint.setColor(Color.YELLOW);
-        canvas.drawRect(33, 33, 77, 60, paint );
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(7);
-        canvas.drawLine(0,0,480,762,paint);
-        System.out.println("Width: "+canvas.getWidth());
-        System.out.println("Height: "+canvas.getHeight());
+        paint.setStrokeWidth(15);
+
+        int width= canvas.getWidth();
+        int height= canvas.getHeight();
+        //vertical lines
+        canvas.drawLine(width/3,0,width/3,height,paint);
+        canvas.drawLine(width*2/3,0,width*2/3,height,paint);
+        //horizontal lines
+        canvas.drawLine(0,height/3,width,height/3,paint);
+        canvas.drawLine(0,height*2/3,width,height*2/3,paint);
+    }
     }
 
-}
+
