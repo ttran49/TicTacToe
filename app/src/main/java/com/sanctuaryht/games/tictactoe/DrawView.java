@@ -6,27 +6,24 @@ import android.graphics.Paint;
 import android.view.View;
 
 public class DrawView extends View {
-    Paint paint = new Paint();
-
+    private Paint paint = new Paint();
+    private int canvasW;
+    private int canvasH;
     public DrawView(Context context) {
         super(context);
     }
 
     @Override
     public void onDraw(Canvas canvas) {
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(3);
-        canvas.drawRect(30, 30, 80, 80, paint);
-        paint.setStrokeWidth(0);
-        paint.setColor(Color.CYAN);
-        canvas.drawRect(33, 60, 77, 77, paint );
-        paint.setColor(Color.YELLOW);
-        canvas.drawRect(33, 33, 77, 60, paint );
-        paint.setColor(Color.BLACK);
-        paint.setStrokeWidth(7);
-        canvas.drawLine(0,0,480,762,paint);
-        System.out.println("Width: "+canvas.getWidth());
-        System.out.println("Height: "+canvas.getHeight());
+        canvasW = canvas.getWidth();
+        canvasH = canvas.getHeight();
+        drawCircle(100,100,canvas);
     }
 
+    public void drawCircle(float x, float y, Canvas canvas){
+        paint.setColor(Color.RED);
+        paint.setStrokeWidth(8);
+        paint.setStyle(Paint.Style.STROKE);
+        canvas.drawCircle(x,y,canvasW/10,paint);
+    }
 }
