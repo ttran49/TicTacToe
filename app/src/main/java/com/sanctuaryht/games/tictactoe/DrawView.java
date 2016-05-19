@@ -59,6 +59,7 @@ public class DrawView extends View {
     public void drawGrid(){
         paint.setColor(Color.BLACK);
         paint.setStrokeWidth(width/50);
+
         //vertical lines
         canvas.drawLine(width/3,0,width/3,height,paint);
         canvas.drawLine(width*2/3,0,width*2/3,height,paint);
