@@ -1,13 +1,25 @@
 package com.sanctuaryht.games.tictactoe;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.opengl.GLES20;
+import android.opengl.GLSurfaceView;
 import android.os.Bundle;
 
-public class MainActivity extends Activity {
+import javax.microedition.khronos.egl.EGLConfig;
+import javax.microedition.khronos.opengles.GL10;
 
+/**
+ * Created by Han on 5/19/2016.
+ */
+public class MainActivity extends Activity {
+    DrawView drawView;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        drawView = new DrawView(this);
+        drawView.setBackgroundColor(Color.WHITE);
+        setContentView(drawView);
+
     }
 }
