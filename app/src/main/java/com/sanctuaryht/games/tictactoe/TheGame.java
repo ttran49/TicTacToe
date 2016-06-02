@@ -9,11 +9,9 @@ public class TheGame {
     private float height;
     private int size=0;
 
-    //contructors
-    public TheGame(){
-        board= new char[9];
-    }
+    //contructor
     public  TheGame(float width, float height){
+        board= new char[9];
         this.width=width;
         this.height=height;
     }
@@ -37,9 +35,15 @@ public class TheGame {
     protected boolean isFull(){
         return getSize()==board.length;
     }
+
+    protected void resetGame(){
+        board = new char[9];
+        size = 0;
+    }
+
     // getting the index depends on where the users
     //tap on the grid
-    private int findIndex (float x, float y){
+    public int findIndex (float x, float y){
         //up top row
         if(y<= height/3){
             //check for columns
@@ -49,7 +53,7 @@ public class TheGame {
                 return 1;
             return 2;
         } else if (y > height/3 && y <= height*2/3){
-            //check for collumns
+            //check for columns
             if(x<= width/3)
                 return 3;
             if(x >width/3 && x<= width*2/3)
@@ -70,21 +74,27 @@ public class TheGame {
     // 6  7  8
     // if full reset array
     // if same = do nothing
-    public void add(char sym,float x, float y){
+    public int add(char sym,float x, float y){
         //reset if full
-        if (isFull()) {
-            board = new char[9];
-            size = 0;
-        }
+        //if (isFull()) {
+        //    board = new char[9];
+        //    size = 0;
+        //}
 
         //check for same symbol
-        int index=findIndex(x,y);
-        if(board[index]==0)
-            return;
-        if (sym==board[index])
-            return;
-        board[index]=sym;
-        size++;
+        int index = -1;
+        if((index = available(sym,x,y))!=-1) {
+            board[index] = sym;
+            size++;
+        }
+        return index;
+    }
+
+    public int available(char sym, float x, float y) {
+        int index = findIndex(x, y);
+        if (board[index] == 'O' || board[index] == 'X')
+            return -1;
+        return index;
     }
 
     //return a char that wins
@@ -121,7 +131,7 @@ public class TheGame {
 
         //check draw
         if(isFull())
-            return 'd';
+            return 'T';
         return 0;
     }
 }

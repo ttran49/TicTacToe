@@ -1,12 +1,12 @@
 package com.sanctuaryht.games.tictactoe;
 
 /**
- * Created by Han on 5/19/2016.
+ * Created by Han on 5/24/2016.
  */
-public class Circle {
+public abstract class Shape {
     private float x;
     private float y;
-    public Circle(float x, float y){
+    public Shape(float x, float y){
         this.x = x;
         this.y = y;
     }
